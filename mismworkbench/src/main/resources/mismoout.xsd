@@ -1,0 +1,1281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2006 rel. 3 sp2 (http://www.altova.com) --><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.mismo.org/residential/2009/schemas" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mismo="http://mismo.org/residential/2009/schemas" targetNamespace="http://www.mismo.org/residential/2009/schemas" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	
+	<xsd:element name="DEAL" type="DEAL"/>
+	<xsd:element name="DOCUMENT" type="DOCUMENT"/>
+	<xsd:element name="MESSAGE" type="MESSAGE"/>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<xsd:complexType name="CLOSING_INFORMATION">
+		<xsd:annotation>
+			<xsd:documentation>Used to be CLOSING_LOAN_DETAIL.  Renamed to CLOSING_INFORMATION per the V3 LOAN Interim meeting</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CLOSING_COST_FUNDS" type="CLOSING_COST_FUNDS" minOccurs="0"/>
+			<xsd:element name="CLOSING_INFORMATION_DETAIL" type="CLOSING_INFORMATION_DETAIL" minOccurs="0"/>
+			<xsd:element name="CLOSING_INSTRUCTION" type="CLOSING_INSTRUCTION" minOccurs="0"/>
+			<xsd:element name="COLLECTED_OTHER_FUNDS" type="COLLECTED_OTHER_FUNDS" minOccurs="0"/>
+			<xsd:element name="COMPENSATIONS" type="COMPENSATIONS" minOccurs="0"/>
+			<xsd:element name="INTERIM_INTERESTS" type="INTERIM_INTERESTS" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A collection of Interim Interest disclosures</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EXTENSION" type="EXTENSION" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="xlink:resourceLink"/>
+	</xsd:complexType>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<xsd:complexType name="CREDIT">
+		<xsd:sequence>
+			<xsd:element name="EXTENSION" type="EXTENSION" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="xlink:resourceLink"/>
+	</xsd:complexType>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<xsd:complexType name="DEAL">
+		<xsd:annotation>
+			<xsd:documentation>The root element for all transactions that apply to the use cases of a single deal.  A Deal may contain multiple loans or loan applications.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:choice minOccurs="0">
+				<xsd:element name="REFERENCE" type="REFERENCE" minOccurs="0"/>
+				<xsd:sequence minOccurs="0">
+					<xsd:element name="ABOUT_VERSIONS" type="ABOUT_VERSIONS" minOccurs="0"/>
+					<xsd:element name="ASSETS" type="ASSETS" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>A collection of assets that are used to determine credit worthiness of the parties.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="COLLATERALS" type="COLLATERALS" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>A collection of assets that will be used as collateral for the loans of this deal or the collateral that has been used for collateral in this deal.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="EXPENSES" type="EXPENSES" minOccurs="0"/>
+					<xsd:element name="LIABILITIES" type="LIABILITIES" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation> collection of objects that describe the liabilities of borrower parties that were examined to determine credit worthiness</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="LOANS" type="LOANS" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>A collection of loans that are part of a single deal</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="PARTIES" type="PARTIES" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>A collection of objects that define specific parties to a deal.  This includes the direct participating parties, such as borrower and seller and the indirect parties such as the credit report provifer.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="RELATIONSHIPS" type="RELATIONSHIPS" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Collection of xlink attributes that define relationships between two elments and optionally provide the type of relationship.  Many:Many relationships are formed with multiple RELATIONSHIP children with the same  xlink:title value</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="SERVICES" type="SERVICES" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>A collection of objects that describe requests and responses for services.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="EXTENSION" type="EXTENSION" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:choice>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="xlink:resourceLink"/>
+		<xsd:attribute name="SequenceNumber" type="xsd:integer">
+			<xsd:annotation>
+				<xsd:documentation>An integer value used to provide an order to multi-instance sibling elements.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="MISMOReferenceModelIdentifier" type="xsd:string">
+			<xsd:annotation>
+				<xsd:documentation>The MISMO Reference Model Identifier is a unique value that represents the version of the MISMO reference model to which the containing XML instance document complies. For detailed information, please see MISMO Engineering Guide 006 – “Versioning and Release Schedule”, at http://wiki.mismo.org/MISMO.Wiki/Wiki.jsp?page=Meg0006</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="DEALS">
+		<xsd:annotation>
+			<xsd:documentation>The root element for all use cases where a collection of Loans need to ne delivered.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="DEAL" type="DEAL" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>The root element for all transactions that apply to the use cases of a single deal.  A Deal may contain multiple loans or loan applications.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EXTENSION" type="EXTENSION" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="xlink:resourceLink"/>
+	</xsd:complexType>
+	<xsd:complexType name="DEAL_SET">
+		<xsd:sequence>
+			<xsd:element name="ACH" type="ACH" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Information specific to drafting of automatic/regular payment.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CASH_REMITTANCE_SUMMARY_NOTIFICATION" type="CASH_REMITTANCE_SUMMARY_NOTIFICATION" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Container for summary cash remittances due to the Investor. </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DEALS" type="DEALS" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The root element for all use cases where a collection of Loans need to ne delivered.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="INVESTOR_FEATURES" type="INVESTOR_FEATURES" minOccurs="0"/>
+			<xsd:element name="PARTIES" type="PARTIES" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A collection of objects that define specific parties to a deal.  This includes the direct participating parties, such as borrower and seller and the indirect parties such as the credit report provifer.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="POOL" type="POOL" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Holds data on multiple loans transmitted as a pool.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RELATIONSHIPS" type="RELATIONSHIPS" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Collection of xlink attributes that define relationships between two elments and optionally provide the type of relationship.  Many:Many relationships are formed with multiple RELATIONSHIP children with the same  xlink:title value</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SERVICER_REPORTING" type="SERVICER_REPORTING" minOccurs="0"/>
+			<xsd:element name="EXTENSION" type="EXTENSION" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="xlink:resourceLink"/>
+		<xsd:attribute name="SequenceNumber" type="xsd:integer">
+			<xsd:annotation>
+				<xsd:documentation>An integer value used to provide an order to multi-instance sibling elements.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="DEAL_SETS">
+		<xsd:sequence>
+			<xsd:element name="DEAL_SET" type="DEAL_SET" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="DEAL_SET_SERVICES" type="DEAL_SET_SERVICES" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A distinct set of services for bundles.  For example priceing a protfoloio of deals for servicing purchace or for collateral purchace.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PARTIES" type="PARTIES" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A collection of objects that define specific parties to a deal.  This includes the direct participating parties, such as borrower and seller and the indirect parties such as the credit report provifer.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="VERIFICATION_DATA" type="VERIFICATION_DATA" minOccurs="0"/>
+			<xsd:element name="EXTENSION" type="EXTENSION" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="xlink:resourceLink"/>
+	</xsd:complexType>
+	<xsd:complexType name="DEAL_SET_SERVICE">
+		<xsd:annotation>
+			<xsd:documentation>Currently xsd:any to allow future definitions</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="EXTENSION" type="EXTENSION" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="xlink:resourceLink"/>
+		<xsd:attribute name="SequenceNumber" type="xsd:integer">
+			<xsd:annotation>
+				<xsd:documentation>An integer value used to provide an order to multi-instance sibling elements.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="DEAL_SET_SERVICES">
+		<xsd:annotation>
+			<xsd:documentation>A distinct set of services for bundles.  For example priceing a protfoloio of deals for servicing purchace or for collateral purchace.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="DEAL_SET_SERVICE" type="DEAL_SET_SERVICE" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Currently xsd:any to allow future definitions</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EXTENSION" type="EXTENSION" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="xlink:resourceLink"/>
+	</xsd:complexType>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<xsd:complexType name="DOCUMENT">
+		<xsd:annotation>
+			<xsd:documentation>Information needed to represent a single complex electronic document. It allows transport of any version 3.x DOCUMENT.  Its children allow unified delivery of the document rendered in a particular viewing technology such as HTML or PDF.  The data for the rendered content is also present along with a MAP of the data to rendered position.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:choice minOccurs="0">
+				<xsd:element name="REFERENCE" type="REFERENCE" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>Used to identify the alternate location of content. Used to reduce the redundancy of a message by placing common content in a alternative location and replacing it with the REFERENCE element that points to that location. A message recipient MAY replace the content of the referenced location for the REFERENCE element before processing or may process the information from that location. Processing XML encryption or XML signature will ALWAYS require replacement of the REFERENCE element with the content or the referenced location. The referenced location MAY be internal to the current XML document or it MAY be external. When internal there WILL NOT be a LocationURI child element. The referenced content MAY or MAY NOT be located at a place other than the root element of the external location.  If it is NOT the root element the LocationXPath child element identifies the location within the located XML document. For an external reference the LocationXPath is ALWAYS and absolute path from the document root. For and internal reference the LocationXPath child element value MAY absolute of relative.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:sequence minOccurs="0">
+					<xsd:choice minOccurs="0">
+						<xsd:element name="UNKNOWN_VERSION3_DOCUMENT" type="UNKNOWN_VERSION3_DOCUMENT" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Used as a place to carry any V3.x DOCUMENT that is of a differnent MISMO Version than that of the MESSAGE</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:sequence minOccurs="0">
+							<xsd:element name="AUDIT_TRAIL" type="AUDIT_TRAIL" minOccurs="0"/>
+							<xsd:element name="DEAL_SETS" type="DEAL_SETS" minOccurs="0"/>
+							<xsd:element name="MAP" type="MAP" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>The Map Element contains or points to stylesheets for generating or populating document views based on the contents of the DATA and/or SIGNATORY elements. The resulting View is used to replace a View containing outdated data or to verify that the data in the target View matches the data provided in the SIGNATORY and DATA elements.</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="RELATIONSHIPS" type="RELATIONSHIPS" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Collection of xlink attributes that define relationships between two elments and optionally provide the type of relationship.  Many:Many relationships are formed with multiple RELATIONSHIP children with the same  xlink:title value</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="SIGNATORIES" type="SIGNATORIES" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Contains information regarding the types of electronic signatures used to represent the legally binding signatures of the parties named in the document along with information regarding the geographic location of the signing event(s).</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="SYSTEM_SIGNATURES" type="SYSTEM_SIGNATURES" minOccurs="0"/>
+							<xsd:element name="VIEWS" type="VIEWS" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>The VIEWS element contains a list of VIEW elements.</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:choice>
+					<xsd:element name="ABOUT_VERSIONS" type="ABOUT_VERSIONS" minOccurs="0"/>
+					<xsd:element name="DOCUMENT_CLASSIFICATION" type="DOCUMENT_CLASSIFICATION" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Contains information about a specific instance of a document that describes its use (as opposed to its contents).</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="EXTENSION" type="EXTENSION" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:choice>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="xlink:resourceLink"/>
+		<xsd:attribute name="SequenceNumber" type="xsd:integer">
+			<xsd:annotation>
+				<xsd:documentation>An integer value used to provide an order to multi-instance sibling elements.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="MISMOReferenceModelIdentifier" type="xsd:string">
+			<xsd:annotation>
+				<xsd:documentation>The MISMO Reference Model Identifier is a unique value that represents the version of the MISMO reference model to which the containing XML instance document complies. For detailed information, please see MISMO Engineering Guide 006 – “Versioning and Release Schedule”, at http://wiki.mismo.org/MISMO.Wiki/Wiki.jsp?page=Meg0006</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	
+	
+	<xsd:complexType name="DOCUMENTS">
+		<xsd:sequence>
+			<xsd:element name="DOCUMENT" type="DOCUMENT" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Information needed to represent a single complex electronic document. It allows transport of any version 3.x DOCUMENT.  Its children allow unified delivery of the document rendered in a particular viewing technology such as HTML or PDF.  The data for the rendered content is also present along with a MAP of the data to rendered position.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EXTENSION" type="EXTENSION" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="xlink:resourceLink"/>
+	</xsd:complexType>
+	
+	
+	
+	
+	
+	<xsd:complexType name="DOCUMENT_SET">
+		<xsd:sequence>
+			<xsd:element name="DOCUMENTS" type="DOCUMENTS" minOccurs="0"/>
+			<xsd:element name="FOREIGN_OBJECTS" type="FOREIGN_OBJECTS" minOccurs="0"/>
+			<xsd:element name="EXTENSION" type="EXTENSION" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="xlink:resourceLink"/>
+		<xsd:attribute name="SequenceNumber" type="xsd:integer">
+			<xsd:annotation>
+				<xsd:documentation>An integer value used to provide an order to multi-instance sibling elements.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="DOCUMENT_SETS">
+		<xsd:sequence>
+			<xsd:element name="DOCUMENT_SET" type="DOCUMENT_SET" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="FOREIGN_OBJECTS" type="FOREIGN_OBJECTS" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A collection of FORREIGN_OBJECT elements</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EXTENSION" type="EXTENSION" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="xlink:resourceLink"/>
+	</xsd:complexType>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<xsd:complexType name="FLOOD">
+		<xsd:sequence>
+			<xsd:element name="FLOOD_REQUEST" type="FLOOD_REQUEST" minOccurs="0"/>
+			<xsd:element name="FLOOD_RESPONSE" type="FLOOD_RESPONSE" minOccurs="0"/>
+			<xsd:element name="EXTENSION" type="EXTENSION" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="xlink:resourceLink"/>
+	</xsd:complexType>
+	
+	
+	
+	
+	
+	<xsd:complexType name="FLOOD_RESPONSE">
+		<xsd:sequence>
+			<xsd:element name="FLOOD_DETERMINATION" type="FLOOD_DETERMINATION" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Information specific to the Flood Zone Determination pursuant to the National Flood Insurance Program.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FLOOD_RESPONSE_DETAIL" type="FLOOD_RESPONSE_DETAIL" minOccurs="0"/>
+			<xsd:element name="LOANS" type="LOANS" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Information specific to a mortgage loan agreement between one or more borrowers and a mortgage lender.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PARTIES" type="PARTIES" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A collection of objects that define specific parties to a deal.  This includes the direct participating parties, such as borrower and seller and the indirect parties such as the credit report provifer.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PROPERTY" type="PROPERTY" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Information specific to the property acting as collateral for the loan.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EXTENSION" type="EXTENSION" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="xlink:resourceLink"/>
+	</xsd:complexType>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<xsd:complexType name="LOAN">
+		<xsd:annotation>
+			<xsd:documentation>Information specific to a mortgage loan agreement between one or more borrowers and a mortgage lender.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ACH" type="ACH" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Information specific to drafting of automatic/regular payment.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ADJUSTMENT" type="ADJUSTMENT" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Data specific to the rules for adjustments and conversions to the interest rate and principal and interest payment for the life of the loan as specified in the Note. Includes provisions to capture the modifications to interest rate and principal and interest payment for each adjustment occurrence period. Also specifies the Rules for selecting the appropriate Index upon which the adjustments may be based.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AFFORDABLE_LENDING" type="AFFORDABLE_LENDING" minOccurs="0"/>
+			<xsd:element name="AMORTIZATION" type="AMORTIZATION" minOccurs="0"/>
+			<xsd:element name="ASSUMABILITY" type="ASSUMABILITY" minOccurs="0"/>
+			<xsd:element name="BILLING_ADDRESS" type="BILLING_ADDRESS" minOccurs="0"/>
+			<xsd:element name="BUYDOWN" type="BUYDOWN" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Information specific to interest rate buydowns.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CLOSING_INFORMATION" type="CLOSING_INFORMATION" minOccurs="0"/>
+			<xsd:element name="CONSTRUCTION" type="CONSTRUCTION" minOccurs="0"/>
+			<xsd:element name="CREDIT_ENHANCEMENTS" type="CREDIT_ENHANCEMENTS" minOccurs="0"/>
+			<xsd:element name="DOCUMENTATIONS" type="DOCUMENTATIONS" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A piece of documentation about borrower Asset, Income or employment.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DOWN_PAYMENTS" type="DOWN_PAYMENTS" minOccurs="0"/>
+			<xsd:element name="DRAW" type="DRAW" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Information on the disbursement of a portion of the loan proceeds to the borrower. This container would be used for a loan with a line of credit or a construction loan.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ELIGIBLE_LOAN_PRODUCTS" type="ELIGIBLE_LOAN_PRODUCTS" minOccurs="0"/>
+			<xsd:element name="ESCROW" type="ESCROW" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Information specific to funds collected through the loan payment and held to pay expenses such as taxes and insurance.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FORM_SPECIFIC_CONTENTS" type="FORM_SPECIFIC_CONTENTS" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Data that is not used for anything else except for document preparaation AND does not fit well anywhere else under DEAL.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="GOVERNMENT_LOAN" type="GOVERNMENT_LOAN" minOccurs="0"/>
+			<xsd:element name="HELOC" type="HELOC" minOccurs="0"/>
+			<xsd:element name="HMDA_LOAN" type="HMDA_LOAN" minOccurs="0"/>
+			<xsd:element name="INELIGIBLE_LOAN_PRODUCTS" type="INELIGIBLE_LOAN_PRODUCTS" minOccurs="0"/>
+			<xsd:element name="INTEREST_CALCULATION" type="INTEREST_CALCULATION" minOccurs="0"/>
+			<xsd:element name="INTEREST_ONLY" type="INTEREST_ONLY" minOccurs="0"/>
+			<xsd:element name="INVESTOR_FEATURES" type="INVESTOR_FEATURES" minOccurs="0"/>
+			<xsd:element name="INVESTOR_LOAN_INFORMATION" type="INVESTOR_LOAN_INFORMATION" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Data specific to the relationship between the seller and the investor, including the reporting and financial obligations between the seller, the servicer, and the investor. The structure also holds data on the investor’s interest in the Delivery Loan.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LATE_CHARGE" type="LATE_CHARGE" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Defines the calculation of late charges that apply when a borrower does not make timely payments.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LOAN_COMMENTS" type="LOAN_COMMENTS" minOccurs="0"/>
+			<xsd:element name="LOAN_DETAIL" type="LOAN_DETAIL" minOccurs="0"/>
+			<xsd:element name="LOAN_IDENTIFIERS" type="LOAN_IDENTIFIERS" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Collection of current and previous identifiers for this loan</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LOAN_LEVEL_CREDIT" type="LOAN_LEVEL_CREDIT" minOccurs="0"/>
+			<xsd:element name="LOAN_PROGRAMS" type="LOAN_PROGRAMS" minOccurs="0"/>
+			<xsd:element name="LOAN_STATE" type="LOAN_STATE" minOccurs="0"/>
+			<xsd:element name="LOAN_STATUSES" type="LOAN_STATUSES" minOccurs="0"/>
+			<xsd:element name="LTV" type="LTV" minOccurs="0"/>
+			<xsd:element name="MATURITY" type="MATURITY" minOccurs="0"/>
+			<xsd:element name="MERS_REGISTRATIONS" type="MERS_REGISTRATIONS" minOccurs="0"/>
+			<xsd:element name="MI_DATA" type="MI_DATA" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Information specific to the mortgage insurance carried by the lender on the loan.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MODIFICATIONS" type="MODIFICATIONS" minOccurs="0"/>
+			<xsd:element name="MORTGAGE_SCORES" type="MORTGAGE_SCORES" minOccurs="0"/>
+			<xsd:element name="NEGATIVE_AMORTIZATION" type="NEGATIVE_AMORTIZATION" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Information regarding loans with negative amortization.  Negative amortization is unpaid interest added to the mortgage principal. This applies to loans where the principal balance increases because the payments do not cover the interest.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="OPTIONAL_PRODUCTS" type="OPTIONAL_PRODUCTS" minOccurs="0"/>
+			<xsd:element name="ORIGINATION_FUNDS" type="ORIGINATION_FUNDS" minOccurs="0"/>
+			<xsd:element name="ORIGINATION_SYSTEMS" type="ORIGINATION_SYSTEMS" minOccurs="0"/>
+			<xsd:element name="PAYMENT" type="PAYMENT" minOccurs="0"/>
+			<xsd:element name="PREPAYMENT_PENALTY" type="PREPAYMENT_PENALTY" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Information specific to calculation of penalties for partial or full principal re-payment prior to Loan Maturity.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PROPOSED_HOUSING_EXPENSES" type="PROPOSED_HOUSING_EXPENSES" minOccurs="0"/>
+			<xsd:element name="PURCHASE_CREDITS" type="PURCHASE_CREDITS" minOccurs="0"/>
+			<xsd:element name="QUALIFICATION" type="QUALIFICATION" minOccurs="0"/>
+			<xsd:element name="REFINANCE" type="REFINANCE" minOccurs="0"/>
+			<xsd:element name="REHABILITATION" type="REHABILITATION" minOccurs="0"/>
+			<xsd:element name="RESPA" type="RESPA" minOccurs="0"/>
+			<xsd:element name="SELECTED_LOAN_PRODUCT" type="LOAN_PRODUCT" minOccurs="0"/>
+			<xsd:element name="SERVICING" type="SERVICING" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Loan level information on the servicing of the loan.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TERMS_OF_MORTGAGE" type="TERMS_OF_MORTGAGE" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Describes characteristics of the loan, including the behavior defined in the financial instrument.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="UNDERWRITING" type="UNDERWRITING" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Information about how the loan was underwritten, by whom the loan was underwritten, the underwriting decision, and key parameters influencing that decision.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EXTENSION" type="EXTENSION" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="xlink:resourceLink"/>
+		<xsd:attribute name="LoanRoleType" type="LoanRoleTypeEnumerated">
+			<xsd:annotation>
+				<xsd:documentation>Used as a attribute on LOAN to distinguish subject loans from related loans.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="SelectionType" type="SelectionType">
+			<xsd:annotation>
+				<xsd:documentation>A classification of the collection of loan parameters to support borrower shopping for loan products.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="SequenceNumber" type="xsd:integer">
+			<xsd:annotation>
+				<xsd:documentation>An integer value used to provide an order to multi-instance sibling elements.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="LOANS">
+		<xsd:annotation>
+			<xsd:documentation>A collection of loans that are part of a single deal</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="COMBINED_LTVS" type="COMBINED_LTVS" minOccurs="0"/>
+			<xsd:element name="LOAN" type="LOAN" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Information specific to a mortgage loan agreement between one or more borrowers and a mortgage lender.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EXTENSION" type="EXTENSION" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="xlink:resourceLink"/>
+	</xsd:complexType>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<xsd:complexType name="MESSAGE">
+		<xsd:annotation>
+			<xsd:documentation>MESSAGE is the root node for V3. It represents the message payload of any SOAP or REST transaction.  In SOAP MESSAGE is the content of &lt;soap:body&gt;.  In REST MESSSAGE is the document that is in the PUT, GET or DELETE HTTP protocol methods.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ABOUT_VERSIONS" type="ABOUT_VERSIONS" minOccurs="0"/>
+			<xsd:element name="DEAL_SETS" type="DEAL_SETS" minOccurs="0"/>
+			<xsd:element name="DOCUMENT_SETS" type="DOCUMENT_SETS" minOccurs="0"/>
+			<xsd:element name="RELATIONSHIPS" type="RELATIONSHIPS" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Collection of xlink attributes that define relationships between two elments and optionally provide the type of relationship.  Many:Many relationships are formed with multiple RELATIONSHIP children with the same  xlink:title value</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SYSTEM_SIGNATURES" type="SYSTEM_SIGNATURES" minOccurs="0"/>
+			<xsd:element name="EXTENSION" type="EXTENSION" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="xlink:resourceLink"/>
+		<xsd:attribute name="MISMOReferenceModelIdentifier" type="xsd:string">
+			<xsd:annotation>
+				<xsd:documentation>The MISMO Reference Model Identifier is a unique value that represents the version of the MISMO reference model to which the containing XML instance document complies. For detailed information, please see MISMO Engineering Guide 006 – “Versioning and Release Schedule”, at http://wiki.mismo.org/MISMO.Wiki/Wiki.jsp?page=Meg0006</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<xsd:complexType name="POOL">
+		<xsd:annotation>
+			<xsd:documentation>Holds data on multiple loans transmitted as a pool.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="POOL_DETAIL" type="POOL_DETAIL" minOccurs="0"/>
+			<xsd:element name="POOL_CERTIFICATE" type="POOL_CERTIFICATE" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Information about a security certificate associated with a pool.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EXTENSION" type="EXTENSION" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="xlink:resourceLink"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="POOL_DETAIL">
+		<xsd:sequence>
+			<xsd:element name="PoolAccrualRateStructureType" type="PoolAccrualRateStructureTypeEnumerated" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Specifies the structure used to determine the accrual interest rate for the pool.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolAmortizationType" type="AmortizationTypeEnumerated" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A classification or description for a pool of loans generally based on the variability of the rate or payment over time.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolAmortizationTypeOtherDescription" type="MISMOString" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A free-form text field used to collect additional information or a description of the mortgage type when Other is selected for Pool Amortization Type.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolAssumabilityIndicator" type="MISMOIndicator" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Indicates whether the pool is backed by loans that are assumable by another borrower.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolBalloonIndicator" type="MISMOIndicator" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Indicates whether or not the pool is backed by loans on which a final balloon payment is required under the terms of the loan repayment schedule to fully pay off the loan.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolClassType" type="PoolClassTypeEnumerated" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Indicates the type of pool and its guarantor (if any).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolClassTypeOtherDescription" type="MISMOString" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A free-form text field used to capture the Pool Class if Other is selected as the Pool Class Type.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolCurrentLoanCount" type="MISMOCount" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The current number of mortgages in the pool with principal balances as of the last cutoff.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolCurrentPrincipalBalanceAmount" type="MISMOAmount" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Total dollar amount of the remaining unpaid principal balance for a pool of mortgages as of the last cutoff.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolCUSIPIdentifier" type="MISMOIdentifier" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Unique identifier for a security according to the standards set by Committee on Uniform Security Identification Practices. The CUSIP is registered with the SEC and the Federal Reserve.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolFixedServicingFeePercent" type="MISMOPercent" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The servicing fee to be used in determining the rate of interest that accrues on an mortgage-backed security (MBS) pool that has a weighted-average structure based on a fixed servicing fee.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolGuarantyFeeRatePercent" type="MISMOPercent" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The percentage of the guaranty fee rate that applies to loans in the pool that do not have a rate specified at the individual loan level.</xsd:documentation>
+					<xsd:appinfo>Renamed.  Used to be "Pool Guaranty Fee Rate".</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolIdentifier" type="MISMOIdentifier" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The unique identifier for a group or pool of loans.  May include relevant prefix and suffix when not parsed into applicable fields.  See Pool Prefix Identifier or Pool Suffix Identifier.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolInterestAdjustmentIndexLeadDaysCount" type="MISMOCount" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The number of days prior to an interest rate effective date used to determine the date for the index value when calculating a new interest rate for a pool of loans. </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolInterestAndPaymentAdjustmentIndexLeadDaysCount" type="MISMOCount" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The number of days prior to an interest rate effective date used to determine the date for the index value when calculating both a new interest rate and a principal and interest payment for a pool of loans. </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolInterestOnlyIndicator" type="MISMOIndicator" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Indicates whether a pool is backed by loans with interest-only payments.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolInterestRateRoundingPercent" type="MISMOPercent" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The percentage to which the interest rate is rounded when a new interest rate is calculated for a pool. This field is used in conjunction with Pool Interest Rate Rounding Type, which indicates how the rounding should occur.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolInterestRateRoundingType" type="PoolInterestRateRoundingTypeEnumerated" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Indicates how the interest rate is rounded when a new interest rate is calculated for a pool of loans.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolInterestRateTruncatedDigitsCount" type="MISMOCount" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation> Indicates the number of digits the interest rate should be truncated for a pool.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolInvestorProductPlanIdentifier" type="MISMOIdentifier" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Identifies the plan of the varying loan payment and/or rate change characteristics for a pool of loans issued by the servicer.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolIssueDate" type="MISMODate" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The date a mortgage-backed security is issued to investors.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolIssuerIdentifier" type="MISMOIdentifier" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Identification number assigned by pool guarantor to the Issuer or current servicer of the pool.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolMarginRatePercent" type="MISMOPercent" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The factor that is added to the ARM index value to calculate the pool accrual rate.</xsd:documentation>
+					<xsd:appinfo>Renamed.  Used to be "Pool Margin Rate".</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolMaturityDate" type="MISMODate" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The date the final payment is due on the pool. The pool maturity date is typically 15 to 45 days after the maturity date of the latest maturing mortgage in the mortgage-backed security.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolMaximumAccrualRatePercent" type="MISMOPercent" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The maximum rate, expressed as a percent, at which interest can accrue on a pool.</xsd:documentation>
+					<xsd:appinfo>Renamed.  Used to be "Pool Maximum Accrual Rate".</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolMinimumAccrualRatePercent" type="MISMOPercent" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The minimum rate, expressed as a percent, at which interest can accrue on a pool.</xsd:documentation>
+					<xsd:appinfo>Renamed.  Used to be "Pool Minimum Accrual Rate".</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolMortgageRatePercent" type="MISMOPercent" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The annual interest rate, expressed as a percent, of the mortgages in a pool as of last cutoff date.</xsd:documentation>
+					<xsd:appinfo>Renamed.  Used to be "Pool Mortgage Rate".</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolMortgageType" type="MortgageTypeEnumerated" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Specifies mortgage type of the loans for the pool.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolMortgageTypeOtherDescription" type="MISMOString" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A free-form text field used to collect additional information or a description of the mortgage type when Other is selected for Pool Mortgage Type.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolOriginalLoanCount" type="MISMOCount" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The total number of loans in the pool when the pool was set up.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolOriginalPrincipalBalanceAmount" type="MISMOAmount" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The total of the original principal balance of all the loans in the pool. For participations the principal balance contributed for an individual loan is adjusted based upon the participation percent.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolOwnershipPercent" type="MISMOPercent" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Identifies the percentage amount of the pool owned by the investor.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolPrefixIdentifier" type="MISMOIdentifier" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The prefix associated with the pool identifier.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolScheduledPrincipalAndInterestPaymentAmount" type="MISMOAmount" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Total scheduled dollar amount of the principal and interest payments of the underlying loans as of the last cutoff date.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolScheduledRemittancePaymentDay" type="MISMODay" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Indicates the day of the month the servicer must remit the scheduled pass-through payment to the certificate holders of a particular pool.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolSecurityInterestRatePercent" type="MISMOPercent" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The security interest rate, expressed as a percent, for the pool as of last cutoff date.</xsd:documentation>
+					<xsd:appinfo>Renamed.  Used to be "Pool Security Interest Rate".</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolSecurityIssueDateInterestRatePercent" type="MISMOPercent" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The security interest rate, expressed as a percent, for the pool as of the security issue date.</xsd:documentation>
+					<xsd:appinfo>Renamed.  Used to be "Pool Security Issue Date Interest Rate".</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolServiceFeeRatePercent" type="MISMOPercent" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The annualized rate, expressed as a percent, used to compute the fee paid to the servicer as of the last cutoff date.</xsd:documentation>
+					<xsd:appinfo>Renamed.  Used to be "Pool Service Fee Rate".</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolStructureType" type="PoolStructureTypeEnumerated" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Denotes the type of mortgage-backed security structure.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolStructureTypeOtherDescription" type="MISMOString" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A free form text field used to collect additional information when Other is selected for Pool Structure Type.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolSuffixIdentifier" type="MISMOIdentifier" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Suffix associated with the Pool Identiifer.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolUnscheduledPrincipalPaymentDay" type="MISMODay" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Indicates the day of the month the servicer must remit unscheduled principal payments to the certificate holders of a particular pool if they are to be remitted sooner than the scheduled remittance day.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolingMethodType" type="PoolingMethodTypeEnumerated" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Indicates the timing of the remittance of the scheduled principal and interest payment from the servicer to the certificate holders of a particular pool.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PoolingMethodTypeOtherDescription" type="MISMOString" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A free-form text field used to capture the Pooling Method Type if Other is selected.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SecurityTradeBookEntryDate" type="MISMODate" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The date that the security will be delivered to the designated book entry account.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SecurityTradeCustomerAccountIdentifier" type="MISMOIdentifier" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The securities trading account identifier assigned to a customer by an investor.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EXTENSION" type="EXTENSION" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="xlink:resourceLink"/>
+	</xsd:complexType>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<xsd:complexType name="SERVICE">
+		<xsd:sequence>
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element name="AUS" type="AUS" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>AUS-Automated Underwriting System.  This service place holder is for future addition of AUS Request and response messages</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="CREDIT" type="CREDIT" minOccurs="0"/>
+				<xsd:element name="DATA_CHANGE" type="DATA_CHANGE" minOccurs="0"/>
+				<xsd:element name="DOCUMENT_MANAGEMENT" type="DOCUMENT_MANAGEMENT" minOccurs="0"/>
+				<xsd:element name="FLOOD" type="FLOOD" minOccurs="0"/>
+				<xsd:element name="FRAUD" type="FRAUD" minOccurs="0"/>
+				<xsd:element name="LOAN_DELIVERY" type="LOAN_DELIVERY" minOccurs="0"/>
+				<xsd:element name="MERS_SERVICE" type="MERS_SERVICE" minOccurs="0"/>
+				<xsd:element name="MI" type="MI" minOccurs="0"/>
+				<xsd:element name="PRIA" type="PRIA" minOccurs="0"/>
+				<xsd:element name="TAX" type="TAX" minOccurs="
